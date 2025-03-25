@@ -1,0 +1,16 @@
+CHIP DMux64Way16 {
+IN in[16], sel[6];
+OUT out1[16], out1[16], out1[16], out1[1], out1[1], out1[1], out1[1], out1[16];
+
+PARTS:
+DMux8Way16(in=in , sel=sel[5] , a=amux1 , b=amux2 , c=amux3 , d=amux4 , e=amux5 , f=amux6 , g=amux7 , h=amux8 );
+DMux8Way16(in=amux1 , sel= , a= , b= , c= , d= , e= , f= , g= , h= );
+DMux8Way16(in=amux2 , sel= , a= , b= , c= , d= , e= , f= , g= , h= );
+DMux8Way16(in=amux3 , sel= , a= , b= , c= , d= , e= , f= , g= , h= );
+DMux8Way16(in=amux4 , sel= , a= , b= , c= , d= , e= , f= , g= , h= );
+DMux8Way16(in=amux5 , sel= , a= , b= , c= , d= , e= , f= , g= , h= );
+DMux8Way16(in=amux6 , sel= , a= , b= , c= , d= , e= , f= , g= , h= );
+DMux8Way16(in=amux7 , sel= , a= , b= , c= , d= , e= , f= , g= , h= );
+DMux8Way16(in=amux8 , sel= , a= , b= , c= , d= , e= , f= , g= , h= );
+
+}

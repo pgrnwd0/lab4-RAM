@@ -7,9 +7,23 @@
  */
 
 CHIP PC {
-    IN // Put you IN code here 
-    OUT // Put you OUT code here 
+    IN in[16], reset, load, inc;
+    OUT out[16]; 
 
     PARTS:
-    // Put your code here:
+    // load
+    Or(a=reset , b=load , out=rsld );
+    Or(a=rsld , b=inc , out=inload );
+
+    Add16(a =preout , b[0] =true, b[1..15]=false , out =plus1 );
+
+    Mux16(a=in , b=plus1 , sel=inc , out=inc1 );
+    Mux16(a=inc1 , b=in , sel=load , out=ld1 );
+    Mux16(a=ld1 , b=false , sel=reset , out=rs1 );
+
+    
+
+    Register(in=rs1 , load=inload , out=preout );
+    And16(a=preout , b=true , out=out );
+    
 }
